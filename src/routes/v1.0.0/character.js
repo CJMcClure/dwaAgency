@@ -20,8 +20,8 @@ module.exports = (express) => {
 	router.get('/character/:uid/:cid', (req, res) => {
 		MatchData.findAll({
 			where: {
-				user_id: req.uid,
-				char_id: req.cid
+				user_id: req.params.uid,
+				char_id: req.params.cid
 			}
 		}).then(function (result) {
 			var tempDamage = 0;
@@ -39,7 +39,7 @@ module.exports = (express) => {
 			}
 
 			// Returns the specified user's character's total stats
-			res.json({userID: req.uid, charID: req.cid, totalDamage: tempDamage, totalHealing: tempHealing, totalWins: tempWins, totalLosses: tempLosses});
+			res.json({userID: req.params.uid, charID: req.params.cid, totalDamage: tempDamage, totalHealing: tempHealing, totalWins: tempWins, totalLosses: tempLosses});
 		});
 	});
 
