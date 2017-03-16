@@ -8,6 +8,10 @@ module.exports = (express) => {
 	//const User = require('../models').User;
 	///const MatchData = require('../models').MatchData;
 
+	router.get('/user/test', (req, res) => {
+		res.json({healthy: true});
+	});
+
 	// get users based on ID, will return all stats for that character
 	router.get('/user/:uid', (req, res) => {
 		//get user based on id
@@ -23,12 +27,12 @@ module.exports = (express) => {
 
 	// add new user to the database
 	router.post('/user/:uname', (req, res) => {
-
+		//if (!find users by id = null)
+			//user.create({insert user params})
+				//res.json new user json
 	});
 
-	router.get('/user/test', (req, res) => {
-		res.json({healthy:true});
-	});
+	
 
 	return router;
 }
