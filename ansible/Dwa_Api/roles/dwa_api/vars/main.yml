@@ -1,0 +1,3 @@
+---
+nginx:
+  domain: dwa_api
