@@ -14,7 +14,7 @@ module.exports = (express) => {
 	router.get('/character/:uid/:cid', (req, res) => {
 		
 
-		res.json()
+		res.json({healthy: true});
 	});
 
 	return router;
