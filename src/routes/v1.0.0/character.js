@@ -6,13 +6,22 @@ module.exports = (express) => {
     const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD);
 
     // Models
-    // UNCOMMENT MODEL CODE BELOW WHEN MODELS HAVE BEEN ADDED, OTHERWISE ERRORS WILL BE THROWN
     // const User = require('../models').User;
     // const Character = require('../models').Character;
     // const MatchData = require('../models').MatchData;
 
+    router.get('/character/test', (req, res) => {
+    	res.json({healthy: true});
+    });
+
 	router.get('/character/:uid/:cid', (req, res) => {
-		
+		MatchData.findAll({
+			where: {
+				user_id: req.uid
+			}
+		}).then(function (result) {
+			console.log(result);
+		});
 
 		res.json({healthy: true});
 	});
