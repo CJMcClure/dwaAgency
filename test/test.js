@@ -1,9 +1,9 @@
-const nock = require('nock');
+//const nock = require('nock');
 const expect = require('chai').expect;
 const request = require('supertest');
 
-
-var getUser = nock('localhost')
+/*
+var getUser = nock('127.0.0.1')
                 .get('/users/1')
                 .reply(200, 
                 {
@@ -15,7 +15,7 @@ var getUser = nock('localhost')
                   healing: 134189
                 });
 
-var getStats = nock('localhost')
+var getStats = nock('127.0.0.1')
 				.get('/users/character')
 				.reply(200,
 				{
@@ -25,7 +25,7 @@ var getStats = nock('localhost')
 					damage: 8000,
 					healing: 9001
 				});
-
+*/
 
 describe('Routes', ()=>{
 
@@ -39,25 +39,29 @@ describe('Routes', ()=>{
 		this.server.close();
 	})
 
-	it('Testing users route', (done)=>
-	{
-		// done <- Helps with ASYC problems
-		request(this.server)
-		.get('/users/1')
-		.set('Accept', 'application/json')
-		.expect(200)
-		.end(done);
-	});
-
-	it('Testing characters route',(done)=>
+	it('Testing characters route file',(done)=>
 	{
 		request(this.server)
-		.get('/character/')
+		.get('/character/test')
 		.set('Accept', 'application/json')
 		.expect(200)
 		.expect( (response)=>
 		{
-			expect(response.body.thanks).to.be.true;
+			expect(response.body.healthy).to.be.true;
+		})
+		.end(done);
+	});
+
+
+	it('Testing users route file',(done)=>
+	{
+		request(this.server)
+		.get('/user/test')
+		.set('Accept', 'application/json')
+		.expect(200)
+		.expect( (response)=>
+		{
+			expect(response.body.healthy).to.be.true;
 		})
 		.end(done);
 	});
