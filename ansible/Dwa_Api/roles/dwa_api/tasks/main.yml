@@ -1,0 +1,20 @@
+---
+- name: Add Nodefront Server Config
+  template: 
+    src: nginx_server_block.j2 
+    dest: /etc/nginx/sites-available/{{ nginx['domain'] }} 
+    mode: 0700
+
+- name: Enable Nodefront Site Config
+  file: 
+    src: /etc/nginx/sites-available/{{ nginx['domain'] }}
+    dest: /etc/nginx/sites-enabled/{{ nginx['domain'] }}
+    state: link
+
+ 
+
+
+
+
+
+

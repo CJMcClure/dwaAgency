@@ -1,0 +1,19 @@
+---
+- name: Create api database
+  mysql_db:
+    name: api
+    state: present
+
+- name: Create non-root user
+  mysql_user:
+    name: "{{ mysql['user'] }}"
+    password: "{{ mysql['password'] }}"
+    priv: 'api.*:ALL'
+    state: present
+
+  
+    
+
+
+
+
