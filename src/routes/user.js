@@ -5,8 +5,8 @@ module.exports = (express) => {
 	const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD);
 
 	//models
-	const User = require('../models').User;
-	const MatchData = require('../models').MatchData;
+	//const User = require('../models').User;
+	///const MatchData = require('../models').MatchData;
 
 	// get users based on ID, will return all stats for that character
 	router.get('/user/:uid', (req, res) => {
