@@ -42,7 +42,7 @@ describe('Routes', ()=>{
 	it('Testing characters route file',(done)=>
 	{
 		request(this.server)
-		.get('/character/test')
+		.get('/v1/character/test')
 		.set('Accept', 'application/json')
 		.expect(200)
 		.expect( (response)=>
@@ -56,7 +56,7 @@ describe('Routes', ()=>{
 	it('Testing users route file',(done)=>
 	{
 		request(this.server)
-		.get('/user/test')
+		.get('/v1/user/test')
 		.set('Accept', 'application/json')
 		.expect(200)
 		.expect( (response)=>
