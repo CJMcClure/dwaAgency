@@ -26,5 +26,9 @@ module.exports = (express) => {
 
 	});
 
+	router.get('/user/test', (req, res) => {
+		res.json({healthy:true});
+	});
+
 	return router;
 }
