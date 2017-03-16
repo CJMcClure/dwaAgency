@@ -25,4 +25,6 @@ module.exports = (express) => {
 	router.post('/user/:uname', (req, res) => {
 
 	});
+
+	return router;
 }

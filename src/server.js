@@ -6,7 +6,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // Routes
-app.use('/', require('./routes')(express));
+app.use('/', require('./routes/user.js')(express));
+app.use('/', require('./routes/character.js')(express));
 
 // Server Active
 module.exports = app.listen(port, () => {
