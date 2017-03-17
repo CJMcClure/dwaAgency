@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 // Routes
 app.use('/v1', require('./routes/v1.0.0/user.js')(express));
 app.use('/v1', require('./routes/v1.0.0/character.js')(express));
+app.use('/v1', require('./routes/v1.0.0/stats.js')(express));
 
 // Server Active
 module.exports = app.listen(port, () => {
