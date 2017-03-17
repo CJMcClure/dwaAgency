@@ -5,10 +5,10 @@ module.exports = (express) => {
 	const Sequelize = require('sequelize');
 
     // Models
-    // UNCOMMENT THE BELOW CODE AND DELETE THIS LINE WHEN MODELS HAVE BEEN CREATED
-    // const User = require('../models').User;
-    // const Character = require('../models').Character;
-    // const MatchData = require('../models').MatchData;
+
+    const User = require('../../models').User;
+    const Character = require('../../models').Character;
+    const Stats = require('../../models').Stats;
 
     // Test route for Mocha test
     router.get('/character/test', (req, res) => {
@@ -20,20 +20,20 @@ module.exports = (express) => {
 		// Check if user exists
 		User.findOne({
 			where: {
-				user_id: req.params.uid
+				id: req.params.uid
 			}
 		}).then((user) => {
 			// Check if character exists
 			Character.findOne({
 				where: {
-					char_id: req.params.cid
+					id: req.params.cid
 				}
 			}).then((character) => {
-				// Check if match data exists
-				MatchData.findAll({
+				// Check if stats exists
+				Stats.findAll({
 					where: {
-						player_id: req.params.uid,
-						character_id: req.params.cid
+						UserId: req.params.uid,
+						CharacterId: req.params.cid
 					}
 				}).then(function(result) {
 					var tempDamage = 0;
@@ -52,13 +52,22 @@ module.exports = (express) => {
 						} else {
 							tempWins += 1;
 						}
+					});
 
-						// Returns the specified user's character's total stats
-						res.json({userID: req.params.uid, userName: user.username, charID: req.params.cid, charName: character.name, totalDamage: tempDamage, totalHealing: tempHealing, totalWins: tempWins, totalLosses: tempLosses});
+					// Returns the specified user's character's total stats
+					res.json({
+						UserId: req.params.uid, 
+						Username: user.name, 
+						CharacterId: req.params.cid, 
+						CharacterName: character.name, 
+						damage: tempDamage, 
+						healing: tempHealing, 
+						wins: tempWins, 
+						losses: tempLosses
 					});
 				}).catch((err) => {
 					res.json({error: err});
-				}); // End of match data exists check
+				}); // End of stats exists check
 			}).catch((err) => {
 				res.json({error: err});
 			}); // End of character exists check
