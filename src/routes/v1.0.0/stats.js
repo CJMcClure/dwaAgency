@@ -24,6 +24,11 @@ module.exports = (express) => {
 					'healing':req.body.healing, 
 					'secret':'Passed'
 				});
+			res.json({"msg":"Match Added Successfully"});
+		}
+		else
+		{
+			res.json({"msg":"Match Could Not Be Added. Bad Password"});
 		}
 	});
 
