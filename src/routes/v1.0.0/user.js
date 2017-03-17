@@ -8,21 +8,14 @@ module.exports = (express) => {
 	const User = require('../models').User;
 	const MatchData = require('../models').MatchData;
 
+	//test route for unit testing
 	router.get('/user/test', (req, res) => {
 		res.json({healthy: true});
 	});
 
 	// get users based on ID, will return all stats for that character
 	router.get('/user/:uid', (req, res) => {
-		//get user based on id
-			//.then
-				//get matches based on user id
-					//.then
-						//assign results to array var
-						//create temp healing, damage, wins and losses variable
-						//foreach through array
-							//temp += arrayvariable
-						//res.json{uid, healing, damage, wins, losses}
+		//query match data table
 		MatchData.findAll({
 			where: {
 				userId: req.params.uid
@@ -68,7 +61,6 @@ module.exports = (express) => {
 				//res.json new user json
 	});
 
-	
 
 	return router;
 }
