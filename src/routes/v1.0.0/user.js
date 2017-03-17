@@ -5,8 +5,8 @@ module.exports = (express) => {
 	//const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD);
 
 	//models
-	//const User = require('../models').User;
-	//const MatchData = require('../models').MatchData;
+	const User = require('../../models').User;
+	const Stats = require('../../models').Stats;
 
 	//test route for unit testing
 	router.get('/user/test', (req, res) => {
@@ -16,9 +16,9 @@ module.exports = (express) => {
 	// get users based on ID, will return all stats for that character
 	router.get('/user/:uid', (req, res) => {
 		//query matchData table with userId
-		MatchData.findAll({
+		Stats.findAll({
 			where: {
-				userId: req.params.uid
+				UserId: req.params.uid
 			}
 		}).then(function(matches) {
 			//variables to be incremented 
@@ -43,26 +43,31 @@ module.exports = (express) => {
 			//querying users table to output calculated stats
 			User.findAll({
 				where: {
-					userId: req.params.uid
+					id: req.params.uid
 				}
 			}).then(function(user) {
 				res.json({
-					id: user.id,
-					username: user.username,
+					id: user[0].id,
+					username: user[0].name,
 					healing: tempHealing,
 					damage: tempDamage,
 					wins: tempWins,
 					losses: tempLoss
 				});
+			}).catch((err) => {
+				res.json({msg: "User not found", err: err});
 			});
+
+		}).catch((err) => {
+			res.json({msg: "No matches for that user", err: err});
 		});
 	});
 
 	// add new user to the database
-	router.post('/user/:uname', (req, res) => {
-		//if (!find users by id = null)
-			//user.create({insert user params})
-				//res.json new user json
+	router.post('/user', (req, res) => {
+		User.create({name: req.body.name}).then((user) => {
+			res.json({id: user.id, name: user.name});
+		});
 	});
 
 
