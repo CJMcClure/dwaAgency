@@ -33,9 +33,11 @@ module.exports = function(sequelize, DataTypes) {
 				}
 			});
 		}
-	};
-  return Stats;
-};
+	}
+});
+return Stats;
+}
+
 
 // Match Data Table:
 //   id UNIQUE INT
