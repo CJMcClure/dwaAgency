@@ -6,9 +6,9 @@ module.exports = function(sequelize, DataTypes) {
 		  autoIncrement: true,
 		  primaryKey: true
 		},
-		result: DataTypes.INT,
-		damage: DataTypes.INT,
-		healing: DataTypes.INT,
+		result: DataTypes.INTEGER,
+		damage: DataTypes.INTEGER,
+		healing: DataTypes.INTEGER,
 		secret: DataTypes.STRING,
 
 	}, {
