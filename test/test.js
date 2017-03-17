@@ -53,6 +53,20 @@ describe('Routes', ()=>{
 	});
 
 
+	it('Testing stats route file',(done)=>
+	{
+		request(this.server)
+		.get('/v1/stats/test')
+		.set('Accept', 'application/json')
+		.expect(200)
+		.expect( (response)=>
+		{
+			expect(response.body.healthy).to.be.true;
+		})
+		.end(done);
+	});
+
+
 	it('Testing users route file',(done)=>
 	{
 		request(this.server)
