@@ -7,6 +7,9 @@ var basename  = path.basename(module.filename);
 var db        = {};
 var sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD);
 
+
+
+
 fs
   .readdirSync(__dirname)
   .filter(function(file) {
