@@ -66,13 +66,13 @@ module.exports = (express) => {
 						losses: tempLosses
 					});
 				}).catch((err) => {
-					res.json({error: err});
+					res.json({msg: "No stats found!", error: err});
 				}); // End of stats exists check
 			}).catch((err) => {
-				res.json({error: err});
+				res.json({msg: "No character found!", error: err});
 			}); // End of character exists check
 		}).catch((err) => {
-			res.json({error: err});
+			res.json({msg: "No user found!", error: err});
 		}); // End of user exists check
 	});
 
