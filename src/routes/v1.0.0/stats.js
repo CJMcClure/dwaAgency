@@ -31,5 +31,5 @@ module.exports = (express) => {
 			res.json({"msg":"Match Could Not Be Added. Bad Password"});
 		}
 	});
-
+	return router;
 }
