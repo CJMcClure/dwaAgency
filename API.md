@@ -1,6 +1,6 @@
 # API Documentation
 
-##Table of Contents
+## Table of Contents
 * [GET User](#one)
 * [POST User](#two)
 * [GET User with Character](#three)
