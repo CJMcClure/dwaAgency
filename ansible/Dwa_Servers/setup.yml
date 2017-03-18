@@ -1,0 +1,20 @@
+---
+# Create Non-Root Users on both servers
+- hosts: staging:production
+  become: true
+  user: root
+  roles:
+    - codeship
+    - chapman
+    - casey
+    - bailey
+    - dean
+    - emily
+
+# Install LEM stack and Node on both servers
+- hosts: staging:production
+  become: true
+  user: mcclure
+  roles: 
+    - lem
+    - node
