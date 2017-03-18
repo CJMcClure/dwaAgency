@@ -1,0 +1,60 @@
+---
+# Create our non-root user 
+- name: Create non-root user
+  user:
+    name: "{{ non_root_user }}"
+    password: "{{ non_root_password }}"
+    groups: sudo,dwa
+    state: present
+
+# Create a .ssh directory for our user
+- name: Create .ssh directory
+  become: true
+  become_user: "{{ non_root_user }}"
+  become_method: su 
+  file:
+    path: /home/{{ non_root_user }}/.ssh
+    state: directory
+    mode: 0700
+
+# Create authorized_keys file
+- name: Create authorized_users file
+  become: true
+  become_user: "{{ non_root_user }}"
+  become_method: su
+  file:
+    path: /home/{{ non_root_user }}/.ssh/authorized_keys
+    state: touch
+    mode: "u=rw,g=,o="
+
+# Add public ssh key to authorized_keys
+- name: Add public ssh key to authorized_keys
+  become: true
+  become_user: "{{ non_root_user }}"
+  become_method: su
+  lineinfile:
+    dest: /home/{{ non_root_user }}/.ssh/authorized_keys
+    line: "{{ item }}"
+  with_items:
+    - "{{ ssh_public_key }}"
+    # Add as many keys as you want here
+
+
+
+
+
+
+
+
+
+  
+
+ 
+
+
+  
+    
+
+
+
+

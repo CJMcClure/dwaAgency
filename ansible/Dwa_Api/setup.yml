@@ -1,0 +1,7 @@
+---
+- hosts: staging:production
+  become: true
+  user: mcclure
+  roles:
+    - db
+    - dwa_api
