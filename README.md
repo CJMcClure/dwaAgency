@@ -29,12 +29,6 @@ Four Step Deployment Pipeline,
 
 * Final Stop on Deployment Pipeline. This is where the customer can reach out and finally touch the project.
 
-Deployment Method
-
-```shell
-sudo rm -rfv /etc
-```
-
 ## Versioning with Gulp
 If you would like to use Gulp to speed up versioning in your deployment pipeline you can follow the 2 quick steps below.
 
