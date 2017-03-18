@@ -1,13 +1,11 @@
 module.exports = (express) => {
 	const router = express.Router();
+	const Stats = require('../../models').Stats;
 
-
-	router.get('/stats/test', (req, res) => 
+	router.get('/stats/test', (req, res) =>
 	{
 		res.json({healthy: true});
 	});
-
-
 
 	router.post('/stats/', (req, res) => 
 	{
@@ -15,16 +13,18 @@ module.exports = (express) => {
 		if(req.body.secret === "test_secret_password")
 		{
 			Stats.create(
-				{
-					'match': req.body.match_id,
-					'character': req.body.character_id,
-					'user': req.body.user_id,
-					'result':req.body.result, 
-					'damage':req.body.damage, 
-					'healing':req.body.healing, 
-					'secret':'Passed'
-				});
-			res.json({"msg":"Match Added Successfully"});
+			{
+				'MatchId': req.body.match_id,
+				'CharacterId': req.body.character_id,
+				'UserId': req.body.user_id,
+				'result':req.body.result,
+				'damage':req.body.damage,
+				'healing':req.body.healing,
+				'secret':'Passed'
+			}).then( (match)=>{
+				res.json( {"match": match} );
+			})
+			
 		}
 		else
 		{
