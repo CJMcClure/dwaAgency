@@ -11,6 +11,14 @@
     dest: /etc/nginx/sites-enabled/{{ nginx['domain'] }}
     state: link
 
+- name: Create Root Project Directory
+  file:
+    path: /var/www/{{ nginx['domain'] }}
+    owner: codeship
+    group: dwa
+    state: directory
+    mode: 0775
+
  
 
 
