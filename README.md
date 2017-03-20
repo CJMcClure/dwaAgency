@@ -50,5 +50,4 @@ gulp version --i [arg]
 	* M - reserved for _major_ fixes. This should only be used for major project 	  releases that interfere with or completely change the way that old 	  features function.
 
 
-
-
+You've successfully deployed your feature!
