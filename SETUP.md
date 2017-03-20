@@ -1,16 +1,16 @@
 # Server Setup
 
-##Create Droplets (Servers)
+## Create Droplets (Servers)
 
-###Sign Up
+### Sign Up
 
 Setup an account at [Digital Ocean](https://www.digitalocean.com)
 
 > Once you are logged in, complete the following steps from your dashboard.
 
-###Initialize
+### Initialize
 
-####Staging Server
+#### Staging Server
 
 Click the `Create Droplet` button.
 
@@ -26,7 +26,7 @@ Click `Create`
 
 > Note: Copy the ip address somewhere readily available, we'll use it within the next few steps
 
-####Production Server
+#### Production Server
 
 Click the `Create Droplet` button.
 
@@ -44,14 +44,14 @@ Click `Create`
 
 ## Install Ansible
 
-###Homebrew First
+### Homebrew First
 
 From your terminal, enter the following command:
 
 ```Shell
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)
 ```
-###Ansible Second
+### Ansible Second
 
 From your terminal, enter the following command:
 
@@ -83,7 +83,7 @@ In terminal change directories to the cloned projects, ansible directory:
 ```Shell
 cd /Path/to/dwaAgency/ansible
 ```
-###Add staging and production ip's to ansible-playbooks
+### Add staging and production ip's to ansible-playbooks
 
 There are two ansible playbooks in this directory, you will need to follow this instruction block for Dwa_Api after we setup the servers.
 
@@ -226,13 +226,13 @@ Installation comes in three parts...
 
 1. Codeship
 
-###Setting up CodeShip
+### Setting up CodeShip
 
-####Getting an Account
+#### Getting an Account
 
 First you need to get an account on _www.Codeship.com_. Once you have registered, you can click on the menu above and click, 'Create a new project'
 
-####Linking a Repository
+#### Linking a Repository
 You will be given three options to link your code repository. _Github_, _BitBucket_, _Gitlab_. 
 
 ![Imgur](http://i.imgur.com/rr3R2qq.png)
@@ -253,7 +253,7 @@ Finalize with writing the commands required to run your tests!
 
 After you have completed this final test commands. It will require you to make a push to the repository you have configured. This will then accept in your push, download that repository on to _CodeShip_ and run your unit test. After completion, if its gets a green light (Your tests succeed) then it will fire off the deployment plan you will be prompted to establish.
 
-####Project Settings
+#### Project Settings
 
 After your successful push (Continue to retry after making modifications to your code so your tests succeed). You can setup a deployment pipeline to have _CodeShip_ push your code to a remote server. This requires you to add _CodeShips_ SSH Key to the ```~/.ssh/authorized_keys``` file. This key can be found under the general tab of project settings.
 
